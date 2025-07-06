@@ -14,10 +14,10 @@ class CustomMiddleware(BaseHTTPMiddleware):
         url = str(request.url)
         print(f"[{current_time}] {method} запит на {url}")
 
-        if "X-Custom-Header" not in request.headers:
+        if "Header" not in request.headers:
             return JSONResponse(
                 status_code=400,
-                content={"detail": "Відсутній заголовок X-Custom-Header"}
+                content={"detail": "Відсутній заголовок Header"}
             )
 
         response = await call_next(request)
